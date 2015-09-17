@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>Leitung anlegen</title>
+</head>
+
+<body>
+    <h1>Formular neuen Knoten anlegen</h1>
+    <form action="Knoten_Form.php" method="post">
+        <p>Name:<div><input type="text" name="name"/></p></div><br>
+        <select name="Knoten" size='5'> 
+        <?php 
+            include('connect.php');
+            $query = "select Knoten_Name from knoten";
+            $result = mysqli_query($link, $query);
+            if(isset($result))
+            {
+                echo "1234";
+            }
+            $num = mysqli_num_rows($result);
+            for($i = 0; $i<$num;$i++)
+            {
+                $row = mysqli_fetch_array($result);
+                echo "<option value= '$row[0]' size='5'> $row[0]</option>";
+            }   
+            
+        ?>
+        </select>
+        <input type="submit"/>
+    </form>
+    </body>
+</html>
